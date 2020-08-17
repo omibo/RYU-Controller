@@ -234,7 +234,6 @@ class ProjectController(app_manager.RyuApp):
         # specifying an action
         actions=[parser.OFPActionOutput(out_port)]
 #################################################
-        self.datapath_list.sort()
         # getting the corresponding datapath
         datapath=self.datapath_list[int(sw)-1]
         # specifying the instruction
@@ -382,7 +381,7 @@ class ProjectController(app_manager.RyuApp):
 
       global switches
       # getting list of switches
-      switch_list = get_switch(self.topology_api_app, None)
+      switch_list = sorted(get_switch(self.topology_api_app, None))
 
       switches=[switch.dp.id for switch in switch_list]
       # getting list of datapaths corresponding to the switches
