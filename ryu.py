@@ -90,18 +90,18 @@ def get_path (src,dst,first_port,final_port):
     Q.remove(u)
 
 
-  # iterating over neighbours
-  for p in switches:
+    # iterating over neighbours
+    for p in switches:
 
-    if adjacency[u][p]!=None:
-      # the edge weight
-      w = 1
+      if adjacency[u][p]!=None:
+        # the edge weight
+        w = 1
 
-      if distance[u] + w < distance[p]:
-        # updating the distance
-        distance[p] = distance[u] + w
-        # seting u as p's parent in the found path
-        previous[p] = u
+        if distance[u] + w < distance[p]:
+          # updating the distance
+          distance[p] = distance[u] + w
+          # seting u as p's parent in the found path
+          previous[p] = u
 
 
   # this variable is used to store the shortest path
