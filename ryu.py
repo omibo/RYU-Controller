@@ -90,7 +90,6 @@ def get_path(
     while len(Q) > 0:
 
         u = minimum_distance(distance, Q)
-        print 'u = ', u
 
         Q.remove(u)
 
@@ -449,7 +448,7 @@ class ProjectController(app_manager.RyuApp):
 
         # set the output port to the port set for the starting point of the found path
             out_port = [x[2] for x in p if x[0] == dpid][0]
-            
+
         else:
 
             out_port = ofproto.OFPP_FLOOD
