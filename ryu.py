@@ -203,55 +203,6 @@ class ProjectController(app_manager.RyuApp):
 
         self.datapath_list = []
 
-    # Handy function that lists all attributes in the given object
-
-    def ls(self, obj):
-
-        print '\n'.join([x for x in dir(obj) if x[0] != '_'])
-
-    # adds a flow entry to the flow table
-
-    def add_flow(
-        self,
-        datapath,
-        in_port,
-        dst,
-        actions,
-        ):
-
-      # getting the protocol
-
-        ofproto = datapath.ofproto
-
-        parser = datapath.ofproto_parser
-
-      # specifying a match
-
-        match = datapath.ofproto_parser.OFPMatch(in_port=in_port,
-                eth_dst=dst)
-
-      # specifying an instruction
-
-        inst = \
-            [parser.OFPInstructionActions(ofproto.OFPIT_APPLY_ACTIONS,
-             actions)]
-
-      # making a flow_mod message
-
-        mod = datapath.ofproto_parser.OFPFlowMod(
-            datapath=datapath,
-            match=match,
-            cookie=0,
-            command=ofproto.OFPFC_ADD,
-            idle_timeout=0,
-            hard_timeout=0,
-            priority=ofproto.OFP_DEFAULT_PRIORITY,
-            instructions=inst,
-            )
-
-      # sending the message
-
-        datapath.send_msg(mod)
 
     # adding entries for the found path to the flow table
 
@@ -456,13 +407,6 @@ class ProjectController(app_manager.RyuApp):
       # construct action list
 
         actions = [parser.OFPActionOutput(out_port)]
-
-      # install a flow to avoid packet_in next time
-
-        if out_port != ofproto.OFPP_FLOOD:
-
-            match = parser.OFPMatch(in_port=in_port, eth_src=src,
-                                    eth_dst=dst)
 
         data = None
 
