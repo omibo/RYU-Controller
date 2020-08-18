@@ -295,10 +295,7 @@ class ProjectController(app_manager.RyuApp):
 
             actions = [parser.OFPActionOutput(out_port)]
 
-#################################################
         # getting the corresponding datapath
-        # datapath=self.datapath_list[int(sw)-1]
-
             datapath = [dp for dp in self.datapath_list if dp.id
                         == sw][0]
 
@@ -451,8 +448,8 @@ class ProjectController(app_manager.RyuApp):
             self.install_path(p, ev, src, dst)
 
         # set the output port to the port set for the starting point of the found path
-
-            out_port = p[0][2]
+            out_port = [x[2] for x in p if x[0] == dpid][0]
+            
         else:
 
             out_port = ofproto.OFPP_FLOOD
