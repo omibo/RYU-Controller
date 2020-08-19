@@ -176,6 +176,11 @@ def get_path(
 
     return r
 
+def format_path(p):
+  res = ""
+  for sw in p:
+    res += " {x[0]}->s{x[0]}->{x[0]} ".format(x=sw)
+  return res
 
 # initialize the application
 
@@ -214,7 +219,7 @@ class ProjectController(app_manager.RyuApp):
         dst_mac,
         ):
 
-        print 'install_path is called'
+        print "install_path: ", format_path(p)
 
         # print "p=", p, " src_mac=", src_mac, " dst_mac=", dst_mac
       # getting the message from the event
@@ -396,10 +401,11 @@ class ProjectController(app_manager.RyuApp):
 
         # get the shortest path from source to destination
 
+            print("> From {0}->s{1} to s{2}->s{3}"\
+              .format(mymac[src][0], mymac[src][1], mymac[dst][0], mymac[dst][1]))
+
             p = get_path(mymac[src][0], mymac[dst][0], mymac[src][1],
                          mymac[dst][1])
-
-            print 'path = ', p
 
         # add the path to the flow table
 
