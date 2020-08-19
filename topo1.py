@@ -46,24 +46,3 @@ class Topo1(Topo):
 
 
 topos = {'topo1': ( lambda: Topo1() ) }
-    
-    # info('*** Starting network\n')
-    # net.build()
-    # info('*** Starting controllers\n')
-    # for controller in net.controllers:
-    #     controller.start()
-
-    # info('*** Starting switches\n')
-    
-    # for i in range(1, len(switches)+1):
-    #     net.get('sw'+str(i)).start([c0])
-
-    # info('*** Post configure switches and hosts\n')
-
-    # CLI(net)
-    # net.stop()
-
-
-# if __name__ == '__main__':
-#     setLogLevel('info')
-#     myNetwork()
