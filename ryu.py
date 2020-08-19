@@ -83,7 +83,7 @@ def get_path(
 
     Q = set(switches)
 
-    print 'Q=', Q
+    # print 'Q=', Q
 
   # in each iteration, the node with minimum distance is removed from the list and its neighbours are updated
 
@@ -216,7 +216,7 @@ class ProjectController(app_manager.RyuApp):
 
         print 'install_path is called'
 
-      # print "p=", p, " src_mac=", src_mac, " dst_mac=", dst_mac
+        # print "p=", p, " src_mac=", src_mac, " dst_mac=", dst_mac
       # getting the message from the event
 
         msg = ev.msg
@@ -327,6 +327,10 @@ class ProjectController(app_manager.RyuApp):
       # getting the message from the event
 
         msg = ev.msg
+        
+      # compare msg_len and total_len (excepted length)
+        if msg.msg_len < msg.total_len:
+            print ("packet truncated: only %s of %s bytes", msg.msg_len, msg.total_len)
 
       # getting the datapath
 
@@ -346,7 +350,7 @@ class ProjectController(app_manager.RyuApp):
 
         pkt = packet.Packet(msg.data)
 
-      # getting the ethernet frame
+      # getting the ethernet frame (Includes source and destination mac address and EtherType)
 
         eth = pkt.get_protocol(ethernet.ethernet)
 
@@ -356,12 +360,17 @@ class ProjectController(app_manager.RyuApp):
 
         if eth.ethertype == 35020:
             return
+      
+      # 34525 is a common IPV6 ethertype so if we print it we have a lot of unused logs
+      # 2054 is ARP
+        # if eth.ethertype == 2054:
+        #     print (eth)
     
-      # getting source from the frame
+      # getting destination from the frame (dst is a mac address)
 
         dst = eth.dst
 
-      # getting destination from the frame
+      # getting source from the frame (src is a mac address)
 
         src = eth.src
 
@@ -400,7 +409,6 @@ class ProjectController(app_manager.RyuApp):
             out_port = [x[2] for x in p if x[0] == dpid][0]
 
         else:
-
             out_port = ofproto.OFPP_FLOOD
 
       # construct action list
