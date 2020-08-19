@@ -392,6 +392,7 @@ class ProjectController(app_manager.RyuApp):
         if src not in mymac.keys():
 
             mymac[src] = (dpid, in_port)
+            print('adding new entry to mac table: dpid = ', dpid, ' in_port = ', in_port)
 
         # print "mymac=", mymac
 
@@ -412,7 +413,10 @@ class ProjectController(app_manager.RyuApp):
             self.install_path(p, ev, src, dst)
 
         # set the output port to the port set for the starting point of the found path
-            out_port = [x[2] for x in p if x[0] == dpid][0]
+            out_port = p[0][2]
+            foundDp = [x for x in p if x[0] == dpid]
+            if (len(foundDp) > 0):
+              out_port = foundDp[0][2]
 
         else:
             out_port = ofproto.OFPP_FLOOD
