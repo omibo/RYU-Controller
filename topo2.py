@@ -8,16 +8,13 @@ from mininet.log import setLogLevel, info
 from mininet.link import TCLink, Intf
 from subprocess import call
 
+from mininet.topo import Topo
 
-def Topo2():
+
+class Topo2(Topo):
 
     def __init__(self):
         Topo.__init__(self)
-
-        c0=self.addController(name='c0',
-                        controller=RemoteController,
-                            ip= '127.0.0.1',
-                        port=6653)
 
         info( '*** Add switches\n')
         sw1 = self.addSwitch('sw1', cls=OVSKernelSwitch)
