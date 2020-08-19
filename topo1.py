@@ -23,34 +23,32 @@ class Topo1(Topo):
 
         switches = list()
         info('*** Add switches\n')
-        for i in range(1, 8):
+        for i in range(1, 5):
             switches.append(self.addSwitch('sw'+str(i)))
 
 
         hosts = list()
         info('*** Add hosts\n')
 
-        for i in range(1, 9):
-            hosts.append(self.addHost('h'+str(i), cls=Host, ip='10.1.0.'+str(i)))
+        for i in range(1, 8):
+            hosts.append(self.addHost('h'+str(i), cls=Host, ip='10.0.0.'+str(i)))
 
 
         info('*** Add links\n')
-        self.addLink(hosts[0], switches[2])
-        self.addLink(hosts[1], switches[2])
-        self.addLink(hosts[2], switches[3])
-        self.addLink(hosts[3], switches[3])
-        self.addLink(hosts[4], switches[5])
-        self.addLink(hosts[5], switches[5])
-        self.addLink(hosts[6], switches[6])
-        self.addLink(hosts[7], switches[6])
+        self.addLink(hosts[0], switches[0], bw=1)
+        self.addLink(hosts[1], switches[0], bw=2)
+        self.addLink(hosts[2], switches[2], bw=3)
+        self.addLink(hosts[3], switches[2], bw=4)
+        self.addLink(hosts[4], switches[3], bw=5)
+        self.addLink(hosts[5], switches[3], bw=1)
+        self.addLink(hosts[6], switches[3], bw=2)
 
-        self.addLink(switches[2], switches[1])
-        self.addLink(switches[3], switches[1])
-        self.addLink(switches[5], switches[4])
-        self.addLink(switches[6], switches[4])
+        self.addLink(switches[0], switches[1], bw=3)
+        self.addLink(switches[0], switches[2], bw=4)
+        self.addLink(switches[1], switches[2], bw=5)
+        self.addLink(switches[2], switches[3], bw=1)
+        self.addLink(switches[1], switches[3], bw=2)
 
-        self.addLink(switches[1], switches[0])
-        self.addLink(switches[4], switches[0])
 
 topos = {'topo1': ( lambda: Topo1() ) }
     
