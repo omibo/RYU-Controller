@@ -392,7 +392,7 @@ class ProjectController(app_manager.RyuApp):
         if src not in mymac.keys():
 
             mymac[src] = (dpid, in_port)
-            print('adding new entry to mac table: dpid = ', dpid, ' in_port = ', in_port)
+            print "adding new entry to mac table: dpid = ", dpid, " in_port = ", in_port
 
         # print "mymac=", mymac
 
