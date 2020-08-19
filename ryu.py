@@ -474,5 +474,4 @@ class ProjectController(app_manager.RyuApp):
 
             adjacency[s2][s1] = port2
 
-
-        # print s1,s2,port1,port2
+            print "s{0}:{1} connected to s{2}:{2}".format(s1, port1, s2, port2)
