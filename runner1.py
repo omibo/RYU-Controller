@@ -30,13 +30,16 @@ class Runner1:
     def printBW(self):
         threading.Timer(5.0, self.changeBW).start()
 
-        print(hosts[0].cmd('iperf h1 s1'))
-        print(hosts[1].cmd('iperf h2 s2'))
-        print(hosts[2].cmd('iperf h3 s3'))
-        print(hosts[3].cmd('iperf h4 s3'))
-        print(hosts[4].cmd('iperf h5 s4'))
-        print(hosts[5].cmd('iperf h6 s4'))
-        print(hosts[6].cmd('iperf h7 s4'))
+        # print(hosts[0].cmd('iperf h1 s1'))
+        # print(hosts[1].cmd('iperf h2 s2'))
+        # print(hosts[2].cmd('iperf h3 s3'))
+        # print(hosts[3].cmd('iperf h4 s3'))
+        # print(hosts[4].cmd('iperf h5 s4'))
+        # print(hosts[5].cmd('iperf h6 s4'))
+        # print(hosts[6].cmd('iperf h7 s4'))
+
+        for link in self.net.link:
+            print(link.intf1.params['bw'])
 
 
     def run(self):
