@@ -60,8 +60,8 @@ def get_path(
 
   # Dijkstra's algorithm
 
-    print 'get_path is called, src=', src, ' dst=', dst, \
-        ' first_port=', first_port, ' final_port=', final_port
+    print('get_path src(switch: {0}, port: {1}) dst(switch: {2}, port: {3})'\
+      .format(src, first_port, dst ,final_port))
 
     distance = {}
 
@@ -355,9 +355,8 @@ class ProjectController(app_manager.RyuApp):
       # avoid broadcast from LLDP
 
         if eth.ethertype == 35020:
-
             return
-
+    
       # getting source from the frame
 
         dst = eth.dst
