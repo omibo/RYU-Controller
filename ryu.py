@@ -402,7 +402,7 @@ class ProjectController(app_manager.RyuApp):
         # get the shortest path from source to destination
 
             print("> From {0}->s{1} to s{2}->{3}"\
-              .format(mymac[src][0], mymac[src][1], mymac[dst][0], mymac[dst][1]))
+              .format(mymac[src][1], mymac[src][0], mymac[dst][0], mymac[dst][1]))
 
             p = get_path(mymac[src][0], mymac[dst][0], mymac[src][1],
                          mymac[dst][1])
