@@ -11,15 +11,15 @@ from subprocess import call
 
 from mininet.topo import Topo
 
-def Topo1():
+class Topo1(Topo):
 
     def __init__(self):
         Topo.__init__(self)
 
-        c0 = self.addController(name='c0',
-                            controller=RemoteController,
-                            ip='127.0.0.1',
-                            port=6653)
+        # c0 = self.addController(name='c0',
+        #                     controller=RemoteController,
+        #                     ip='127.0.0.1',
+        #                     port=6653)
 
         switches = list()
         info('*** Add switches\n')
