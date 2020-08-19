@@ -35,19 +35,19 @@ class Topo1(Topo):
 
 
         info('*** Add links\n')
-        self.addLink(hosts[0], switches[0], bw=1)
-        self.addLink(hosts[1], switches[0], bw=2)
-        self.addLink(hosts[2], switches[2], bw=3)
-        self.addLink(hosts[3], switches[2], bw=4)
-        self.addLink(hosts[4], switches[3], bw=5)
-        self.addLink(hosts[5], switches[3], bw=1)
-        self.addLink(hosts[6], switches[3], bw=2)
+        self.addLink(hosts[0], switches[0], cls=TCLink, bw=1)
+        self.addLink(hosts[1], switches[0], cls=TCLink, bw=2)
+        self.addLink(hosts[2], switches[2], cls=TCLink, bw=3)
+        self.addLink(hosts[3], switches[2], cls=TCLink, bw=4)
+        self.addLink(hosts[4], switches[3], cls=TCLink, bw=5)
+        self.addLink(hosts[5], switches[3], cls=TCLink, bw=1)
+        self.addLink(hosts[6], switches[3], cls=TCLink, bw=2)
 
-        self.addLink(switches[0], switches[1], bw=3)
-        self.addLink(switches[0], switches[2], bw=4)
-        self.addLink(switches[1], switches[2], bw=5)
-        self.addLink(switches[2], switches[3], bw=1)
-        self.addLink(switches[1], switches[3], bw=2)
+        self.addLink(switches[0], switches[1], cls=TCLink, bw=3)
+        self.addLink(switches[0], switches[2], cls=TCLink, bw=4)
+        self.addLink(switches[1], switches[2], cls=TCLink, bw=5)
+        self.addLink(switches[2], switches[3], cls=TCLink, bw=1)
+        self.addLink(switches[1], switches[3], cls=TCLink, bw=2)
 
 
 topos = {'topo1': ( lambda: Topo1() ) }
