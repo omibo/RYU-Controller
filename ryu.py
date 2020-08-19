@@ -179,7 +179,7 @@ def get_path(
 def format_path(p):
   res = ""
   for sw in p:
-    res += " {x[0]}->s{x[0]}->{x[0]} ".format(x=sw)
+    res += " {x[1]}->s{x[0]}->{x[2]} ".format(x=sw)
   return res
 
 # initialize the application
