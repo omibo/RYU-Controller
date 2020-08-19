@@ -16,11 +16,6 @@ class Topo1(Topo):
     def __init__(self):
         Topo.__init__(self)
 
-        # c0 = self.addController(name='c0',
-        #                     controller=RemoteController,
-        #                     ip='127.0.0.1',
-        #                     port=6653)
-
         switches = list()
         info('*** Add switches\n')
         for i in range(1, 5):
@@ -36,7 +31,7 @@ class Topo1(Topo):
 
         info('*** Add links\n')
         self.addLink(hosts[0], switches[0], cls=TCLink, bw=1)
-        self.addLink(hosts[1], switches[0], cls=TCLink, bw=2)
+        self.addLink(hosts[1], switches[1], cls=TCLink, bw=2)
         self.addLink(hosts[2], switches[2], cls=TCLink, bw=3)
         self.addLink(hosts[3], switches[2], cls=TCLink, bw=4)
         self.addLink(hosts[4], switches[3], cls=TCLink, bw=5)
@@ -45,9 +40,9 @@ class Topo1(Topo):
 
         self.addLink(switches[0], switches[1], cls=TCLink, bw=3)
         self.addLink(switches[0], switches[2], cls=TCLink, bw=4)
-        self.addLink(switches[1], switches[2], cls=TCLink, bw=5)
+        # self.addLink(switches[1], switches[2], cls=TCLink, bw=5)
         self.addLink(switches[2], switches[3], cls=TCLink, bw=1)
-        self.addLink(switches[1], switches[3], cls=TCLink, bw=2)
+        # self.addLink(switches[1], switches[3], cls=TCLink, bw=2)
 
 
 topos = {'topo1': ( lambda: Topo1() ) }
