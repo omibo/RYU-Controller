@@ -40,20 +40,20 @@ class Topo2(Topo):
         h3 = self.addHost('h3', cls=Host, ip='10.1.0.3',mac='00:00:00:00:00:03', defaultRoute=None)
 
         #DC - Chicago
-        s1 = self.addHost('s1', cls=Host, ip='10.0.0.1',mac='00:00:00:00:00:11', defaultRoute=None)#file server
-        s2 = self.addHost('s2', cls=Host, ip='10.0.0.2',mac='00:00:00:00:00:12', defaultRoute=None)#email server
-        s3 = self.addHost('s3', cls=Host, ip='10.0.0.3',mac='00:00:00:00:00:13', defaultRoute=None)#web server
-        s4 = self.addHost('s4', cls=Host, ip='10.0.0.4',mac='00:00:00:00:00:14', defaultRoute=None)#backup server
+        s1 = self.addHost('s1', cls=Host, ip='10.0.0.1',mac='00:00:00:00:00:11', defaultRoute=None)
+        s2 = self.addHost('s2', cls=Host, ip='10.0.0.2',mac='00:00:00:00:00:12', defaultRoute=None)
+        s3 = self.addHost('s3', cls=Host, ip='10.0.0.3',mac='00:00:00:00:00:13', defaultRoute=None)
+        s4 = self.addHost('s4', cls=Host, ip='10.0.0.4',mac='00:00:00:00:00:14', defaultRoute=None)
         #DC - NewYork
-        s5 = self.addHost('s5', cls=Host, ip='10.0.1.1',mac='00:00:00:00:00:21', defaultRoute=None)#file server
-        s6 = self.addHost('s6', cls=Host, ip='10.0.1.2',mac='00:00:00:00:00:22', defaultRoute=None)#email server
-        s7 = self.addHost('s7', cls=Host, ip='10.0.1.3',mac='00:00:00:00:00:23', defaultRoute=None)#web server
-        s8 = self.addHost('s8', cls=Host, ip='10.0.1.4',mac='00:00:00:00:00:24', defaultRoute=None)#backup server
+        s5 = self.addHost('s5', cls=Host, ip='10.0.1.1',mac='00:00:00:00:00:21', defaultRoute=None)
+        s6 = self.addHost('s6', cls=Host, ip='10.0.1.2',mac='00:00:00:00:00:22', defaultRoute=None)
+        s7 = self.addHost('s7', cls=Host, ip='10.0.1.3',mac='00:00:00:00:00:23', defaultRoute=None)
+        s8 = self.addHost('s8', cls=Host, ip='10.0.1.4',mac='00:00:00:00:00:24', defaultRoute=None)
         #DC - Seattle
-        s9 = self.addHost('s9', cls=Host, ip='10.0.2.1',mac='00:00:00:00:00:31', defaultRoute=None)#file server
-        s10 = self.addHost('s10', cls=Host, ip='10.0.2.2',mac='00:00:00:00:00:32', defaultRoute=None)#email server
-        s11 = self.addHost('s11', cls=Host, ip='10.0.2.3',mac='00:00:00:00:00:33', defaultRoute=None)#web server
-        s12 = self.addHost('s12', cls=Host, ip='10.0.2.4',mac='00:00:00:00:00:34', defaultRoute=None)#backup server
+        s9 = self.addHost('s9', cls=Host, ip='10.0.2.1',mac='00:00:00:00:00:31', defaultRoute=None)
+        s10 = self.addHost('s10', cls=Host, ip='10.0.2.2',mac='00:00:00:00:00:32', defaultRoute=None)
+        s11 = self.addHost('s11', cls=Host, ip='10.0.2.3',mac='00:00:00:00:00:33', defaultRoute=None)
+        s12 = self.addHost('s12', cls=Host, ip='10.0.2.4',mac='00:00:00:00:00:34', defaultRoute=None)
 
         info( '*** Add links\n')
         self.addLink(s1, sw1)
